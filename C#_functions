@@ -1,0 +1,96 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            //string randomOrder = "ytgfrtepqohgfvxy";           
+            //string alphaOrder = SortAlpha(arrAlpha);
+            //Console.WriteLine(" {0} alphabetically ordered  is {1}",randomOrder,
+            //SortedString(randomOrder));
+            //Console.WriteLine(" {0} without duplicates is {1}", randomOrder, 
+            //    RemoveDuplicateChars(randomOrder));
+
+            //ReverseStringWithFN();
+            //ReverseStringWithLINQ();
+            //ReverseTextArrRev();
+            Console.Read();
+        }
+        static string SortAlpha(string randomOrder)
+        {   
+            char[] arrAlpha = randomOrder.ToArray();
+            Array.Sort(arrAlpha);
+            string alphaOrder = new string(arrAlpha);
+            return alphaOrder;
+        }
+        static string RemoveDuplicateChars(string inStr)
+        {   
+            string checkString = "";          
+            // Loop over each character.
+            foreach (char inChar in inStr)
+            {
+                // See if character is in the checkString.
+                if (checkString.IndexOf(inChar) == -1)
+                {
+                    // Append to the checkString and the result.
+                    checkString += inChar;                   
+                }
+            }
+            return checkString;
+        }
+
+        static void ReverseTextArrRev()
+        {
+            string input = "one two three four five";
+            char[] chars = input.ToCharArray();
+            Array.Reverse(chars);
+            string s =  new string(chars);
+            Console.WriteLine(s);
+        }
+        static void ReverseStringWithLINQ()
+        {
+            string input = "one two three four five";
+            string rev = new string(input.Reverse().ToArray());            
+            Console.WriteLine(rev);
+        }
+
+         static void ReverseStringWithFN()
+        {
+            string input = "one two three four five";
+            string strrev = "";
+            foreach (var word in input.Split(' '))
+            {
+                string temp = "";
+                foreach (var ch in word.ToCharArray())
+                {
+                    //append first word last
+                    temp = ch + temp;
+                }
+                strrev = strrev + temp + " ";
+            }
+            Console.WriteLine(strrev); 
+        }
+
+        static string SortedString(string inStr)
+        {            
+            char tmpChar;
+            bool charShifted;   
+            char[] inCharArray = inStr.ToCharArray();
+            for (int i = 0; i < inCharArray.Length; i++)
+            {
+                //move lesser chars to left 
+                //move greater chars to right
+                charShifted = false;
+                for (int j = 0; j < inCharArray.Length - 1; j++)
+                {
+                    if (inCharArray[j] > inCharArray[j + 1])
+                    {
+                        tmpChar = inCharArray[j+1];
+                        inCharArray[j+1] = inCharArray[j];
+                        inCharArray[j] = tmpChar;
+                        charShifted = true;
+                    }
+                }
+                if (!charShifted) break;
+            }
+            return new string(inCharArray);   
+        }        
+    }
