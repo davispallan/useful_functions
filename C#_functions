@@ -69,6 +69,17 @@ class Program
             Console.WriteLine(strrev); 
         }
 
+        static string RevStr (string inStr)
+        {
+               string revStr = "";
+                for (int i=0; i<inStr.Length-1; i++)
+                {
+                    //append first word last
+                    revStr = inStr[i] + revStr;
+                }
+               return revStr;
+        }
+        
         static string SortedString(string inStr)
         {            
             char tmpChar;
